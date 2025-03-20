@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportForm", "ReportForm\ReportForm.csproj", "{9A4D63C5-264E-4511-A382-0C3CACA29628}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SynthesisReport", "SynthesisReport\SynthesisReport.vdproj", "{EC25217F-2F17-4017-832B-C39862B07C07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A4D63C5-264E-4511-A382-0C3CACA29628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A4D63C5-264E-4511-A382-0C3CACA29628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A4D63C5-264E-4511-A382-0C3CACA29628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A4D63C5-264E-4511-A382-0C3CACA29628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC25217F-2F17-4017-832B-C39862B07C07}.Debug|Any CPU.ActiveCfg = Debug
+		{EC25217F-2F17-4017-832B-C39862B07C07}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {631FC44C-C542-4C7B-AEAF-3AD70AFBE785}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A4D63C5-264E-4511-A382-0C3CACA29628}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ReportForm</RootNamespace>
+    <AssemblyName>ReportForm</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.17.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.17\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=8.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.8.0.3\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="A_Doanhthuchitiet_Pg.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>A_Doanhthuchitiet_Pg.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetbangoigensolutionq7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetbangoigensolutionq7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetBanthuoctieuhoaQ7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetDanhsachkhamrhm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetDanhsachkhamrhm.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetDoanhthubanthuocQ7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthubanthuocQ7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetSoluotkhamBv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamBv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetSoluotkhamQ7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamQ7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSettonghopdichvuchitietq7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSettonghopdichvuchitietq7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetTonghopdvq7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7DataSetTonghopdvq72.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq72.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_PKQ7soluotkhamq72.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_PKQ7soluotkhamq72.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet1phantich3chinhanh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet1phantich3chinhanh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet24.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet25.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet25.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet26.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet26.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet27.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet28.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet28.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet29.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet29.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet30.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet30.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet31.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet32.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet32.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetBangkethutientheonoidung.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetBangkethutientheonoidung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetbangoigen2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetbangoigen2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetbangoigensolution.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetbangoigensolution2cn1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution2cn1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetBanthuoctieuhoa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetbenhnhankskquaylaikham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetbenhnhankskquaylaikham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetCanhbaotiemchuan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetCanhbaotiemchuan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetChiphinhanvpp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetChiphinhanvpp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetChiphinhapthuoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetChiphinhapthuoc1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetChiphinhapthuocbv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuocbv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetChiphinhapvpp2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetChiphinhapvpp2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDanhsachchamsoctieuhoa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDanhsachchamsoctieuhoa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthubanthuoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthubanthuoctieuhoa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthugoikhamconlai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthugoikhamconlai.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetdoanhthugoikhamconlai1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetdoanhthugoikhamconlai1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthuksktoandien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthuksktoandien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetdoanhthuksktoandien1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetdoanhthuksktoandien1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetDoanhthumotkhachhang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhachhang.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetdoanhthutonghop915.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop915.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetdoanhthutonghop9152.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop9152.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetgensolution2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetgensolution2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetHinhthucdenkham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetHinhthucdenkham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetHoatdongbaocaokhambenh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetHoatdongbaocaokhambenh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetHoatdonghangngayphongkham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetHoatdonghangngayphongkham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetKhamsuckhoecongty.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetKhamsuckhoecongty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetListbenhnhanhtheongaysinh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetListbenhnhanhtheongaysinh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetNhaphoachat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetNhaphoachat2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetNhapthuoc2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetNhapthuoc2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetNhapvattu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetNhapvattu.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetNhapvattu2cn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetNhapvattu2cn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetPhantich3chinhanh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetPhantich3chinhanh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetSoluotkham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetSoluotkham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetsoluotkham2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetsoluotkham2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetSoluotkham3Chinhanh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetSoluotkham3Chinhanh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetThammy.cs">
+      <DependentUpon>Clinic_TMHDataSetThammy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetThammy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetThammy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetThoigiankhamdautien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSettonghopdichvuchitiet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHDataSettonghopdichvuchitiet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHdoanhthuksktoandien2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHdoanhthuksktoandien2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHgoikhamconlai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHgoikhamconlai.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHKhamsuckhoecongty2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHKhamsuckhoecongty2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHphantich3chinhanh2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHphantich3chinhanh2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHquaylaikham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHquaylaikham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHsoluotkham3cn2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHsoluotkham3cn2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHThoigiamkhamdautien2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHThoigiamkhamdautien2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_TMHthoigiankhamdautien2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clinic_TMHthoigiankhamdautien2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data_SystemDataSetBanmypham.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Data_SystemDataSetBanmypham.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetBandichvuphauthuat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetBandichvuphauthuat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetBanthuoctieuhoaBv1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetBanthuoctieuhoaBv1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetChiphinhapvpp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetChiphinhapvpp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetDoanhthubanthuoc3CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuoc3CN.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetDoanhthubanthuocBV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuocBV.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetDoanhthumotkhachhangBv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetDoanhthumotkhachhangBv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetKhachkhamtmh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetKhachkhamtmh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetNhaphoachatbenhvien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetNhaphoachatbenhvien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetNhapthuocbenhvien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetNhapthuocbenhvien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetNhapvattubenhvien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetNhapvattubenhvien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetSoluongkhamvachidinhbstmh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetThoigiankhamdautien.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSetTinhhinhkcbtmh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSetTinhhinhkcbtmh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSettonghopdichvuchitietbv1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSettonghopdichvuchitietbv1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHDataSettonghopdv4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHDataSettonghopdv4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHdttonghopdichvu1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHdttonghopdichvu1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHKhachkhamtmh2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHKhachkhamtmh2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHKhachtmh1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHKhachtmh1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="eHospital_TMHsoluotkhambv2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHospital_TMHsoluotkhambv2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CP_ChiPhiNhapVPP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CP_ChiPhiNhapVPP.Designer.cs">
+      <DependentUpon>Form_CP_ChiPhiNhapVPP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CP_Nhaphoachatxn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CP_Nhaphoachatxn.Designer.cs">
+      <DependentUpon>Form_CP_Nhaphoachatxn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CP_Nhapthuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CP_Nhapthuoc.Designer.cs">
+      <DependentUpon>Form_CP_Nhapthuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CP_NhapVatTuYTe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CP_NhapVatTuYTe.Designer.cs">
+      <DependentUpon>Form_CP_NhapVatTuYTe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Bangkethutientheonoidung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Bangkethutientheonoidung.Designer.cs">
+      <DependentUpon>Form_CSKH_Bangkethutientheonoidung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Canhbaotiemchuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Canhbaotiemchuan.Designer.cs">
+      <DependentUpon>Form_CSKH_Canhbaotiemchuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Hinhthucdenkham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Hinhthucdenkham.Designer.cs">
+      <DependentUpon>Form_CSKH_Hinhthucdenkham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Hoatdonghangngayphongkham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Hoatdonghangngayphongkham.Designer.cs">
+      <DependentUpon>Form_CSKH_Hoatdonghangngayphongkham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Listbenhnhantheongaysinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Listbenhnhantheongaysinh.Designer.cs">
+      <DependentUpon>Form_CSKH_Listbenhnhantheongaysinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Thongkegoikhamtoandienvachuyenkhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Thongkegoikhamtoandienvachuyenkhoa.Designer.cs">
+      <DependentUpon>Form_CSKH_Thongkegoikhamtoandienvachuyenkhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Danhsachchamsoctieuhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Danhsachchamsoctieuhoa.Designer.cs">
+      <DependentUpon>Form_CSKH_Danhsachchamsoctieuhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Bandichvuphauthuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Bandichvuphauthuat.Designer.cs">
+      <DependentUpon>Form_DT_Bandichvuphauthuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Bangoigensolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Bangoigensolution.Designer.cs">
+      <DependentUpon>Form_DT_Bangoigensolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Banmypham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Banmypham.Designer.cs">
+      <DependentUpon>Form_DT_Banmypham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Banthuoctieuhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Banthuoctieuhoa.Designer.cs">
+      <DependentUpon>Form_DT_Banthuoctieuhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ADMIN_doimatkhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ADMIN_doimatkhau.Designer.cs">
+      <DependentUpon>Form_ADMIN_doimatkhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CSKH_Hoatdongbaocaokhoakhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CSKH_Hoatdongbaocaokhoakhambenh.Designer.cs">
+      <DependentUpon>Form_CSKH_Hoatdongbaocaokhoakhambenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_BenhNhanKSKQuayLai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_BenhNhanKSKQuayLai.Designer.cs">
+      <DependentUpon>Form_DT_BenhNhanKSKQuayLai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Doanhthuksktoandien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Doanhthuksktoandien.Designer.cs">
+      <DependentUpon>Form_DT_Doanhthuksktoandien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Doanhthutheochuyenkhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Doanhthutheochuyenkhoa.Designer.cs">
+      <DependentUpon>Form_DT_Doanhthutheochuyenkhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Goikhamconlai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Goikhamconlai.Designer.cs">
+      <DependentUpon>Form_DT_Goikhamconlai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_Thuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Thuoc.Designer.cs">
+      <DependentUpon>Form_DT_Thuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVu.Designer.cs">
+      <DependentUpon>Form_DT_TongHopDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVuChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVuChiTiet.Designer.cs">
+      <DependentUpon>Form_DT_TongHopDichVuChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVuChiTietDongTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_TongHopDichVuChiTietDongTien.Designer.cs">
+      <DependentUpon>Form_DT_TongHopDichVuChiTietDongTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_chidinhpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_chidinhpt.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_chidinhpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_thuoctheobacsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_banthuoctheobacsi.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_thuoctheobacsi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_KhachKhamhTMH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_KhachKhamhTMH.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_KhachKhamhTMH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Soluongkhamvachidinhbstmh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Soluongkhamvachidinhbstmh.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_Soluongkhamvachidinhbstmh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Tinhhinhkcbtmh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Tinhhinhkcbtmh.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_Tinhhinhkcbtmh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Tyledonthuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Hoatdong68_Tyledonthuoc.Designer.cs">
+      <DependentUpon>Form_Hoatdong68_Tyledonthuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbenhnhanxuatvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbenhnhanxuatvien.Designer.cs">
+      <DependentUpon>Form_KHTH_danhsachbenhnhanxuatvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbnnn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbnnn.Designer.cs">
+      <DependentUpon>Form_KHTH_danhsachbnnn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbnpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_danhsachbnpt.Designer.cs">
+      <DependentUpon>Form_KHTH_danhsachbnpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_sokhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_sokhambenh.Designer.cs">
+      <DependentUpon>Form_KHTH_sokhambenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_sophauthuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_sophauthuat.Designer.cs">
+      <DependentUpon>Form_KHTH_sophauthuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_soravaochuyenvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_soravaochuyenvien.Designer.cs">
+      <DependentUpon>Form_KHTH_soravaochuyenvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_thongkebenhtattheobenhnhankhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_thongkebenhtattheobenhnhankhambenh.Designer.cs">
+      <DependentUpon>Form_KHTH_thongkebenhtattheobenhnhankhambenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_thongkesoravaochuyenvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_thongkesoravaochuyenvien.Designer.cs">
+      <DependentUpon>Form_KHTH_thongkesoravaochuyenvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_thongketinhhinhhoatdongkhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_thongketinhhinhhoatdongkhambenh.Designer.cs">
+      <DependentUpon>Form_KHTH_thongketinhhinhhoatdongkhambenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_thongketinhhinhphauthuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_thongketinhhinhphauthuat.Designer.cs">
+      <DependentUpon>Form_KHTH_thongketinhhinhphauthuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_tinhhinhhoatdongcls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_tinhhinhhoatdongcls.Designer.cs">
+      <DependentUpon>Form_KHTH_tinhhinhhoatdongcls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongcls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongcls.Designer.cs">
+      <DependentUpon>Form_KHTH_hoatdongcls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongdieutri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongdieutri.Designer.cs">
+      <DependentUpon>Form_KHTH_hoatdongdieutri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongkham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongkham.Designer.cs">
+      <DependentUpon>Form_KHTH_hoatdongkham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongkhambenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_hoatdongkhambenh.Designer.cs">
+      <DependentUpon>Form_KHTH_hoatdongkhambenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_maubaocaopkdk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_maubaocaopkdk.Designer.cs">
+      <DependentUpon>Form_KHTH_maubaocaopkdk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KHTH_tinhhinhsudungthuoctheobacsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KHTH_tinhhinhsudungthuoctheobacsi.Designer.cs">
+      <DependentUpon>Form_KHTH_tinhhinhsudungthuoctheobacsi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_Khachtmh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_Khachtmh.Designer.cs">
+      <DependentUpon>Form_MKT_Khachtmh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_Khamsuckhoecongty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_Khamsuckhoecongty.Designer.cs">
+      <DependentUpon>Form_MKT_Khamsuckhoecongty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_PhanTich3ChiNhanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_PhanTich3ChiNhanh.Designer.cs">
+      <DependentUpon>Form_MKT_PhanTich3ChiNhanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_Soluotkham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_Soluotkham.Designer.cs">
+      <DependentUpon>Form_MKT_Soluotkham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_Thoigiankhamdautien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_Thoigiankhamdautien.Designer.cs">
+      <DependentUpon>Form_MKT_Thoigiankhamdautien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MKT_Tongdoanhthumotkhach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MKT_Tongdoanhthumotkhach.Designer.cs">
+      <DependentUpon>Form_MKT_Tongdoanhthumotkhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TNIEN_Danhsachkhamrhm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TNIEN_Danhsachkhamrhm.Designer.cs">
+      <DependentUpon>Form_TNIEN_Danhsachkhamrhm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Form_DT_Thammy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DT_Thammy.Designer.cs">
+      <DependentUpon>Form_DT_Thammy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ADMIN_Phanquyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ADMIN_Phanquyen.Designer.cs">
+      <DependentUpon>Form_ADMIN_Phanquyen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form_CP_ChiPhiNhapVPP.resx">
+      <DependentUpon>Form_CP_ChiPhiNhapVPP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CP_Nhaphoachatxn.resx">
+      <DependentUpon>Form_CP_Nhaphoachatxn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CP_Nhapthuoc.resx">
+      <DependentUpon>Form_CP_Nhapthuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CP_NhapVatTuYTe.resx">
+      <DependentUpon>Form_CP_NhapVatTuYTe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Bangkethutientheonoidung.resx">
+      <DependentUpon>Form_CSKH_Bangkethutientheonoidung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Canhbaotiemchuan.resx">
+      <DependentUpon>Form_CSKH_Canhbaotiemchuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Danhsachchamsoctieuhoa.resx">
+      <DependentUpon>Form_CSKH_Danhsachchamsoctieuhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Hinhthucdenkham.resx">
+      <DependentUpon>Form_CSKH_Hinhthucdenkham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Hoatdonghangngayphongkham.resx">
+      <DependentUpon>Form_CSKH_Hoatdonghangngayphongkham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Listbenhnhantheongaysinh.resx">
+      <DependentUpon>Form_CSKH_Listbenhnhantheongaysinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Thongkegoikhamtoandienvachuyenkhoa.resx">
+      <DependentUpon>Form_CSKH_Thongkegoikhamtoandienvachuyenkhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Bandichvuphauthuat.resx">
+      <DependentUpon>Form_DT_Bandichvuphauthuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Bangoigensolution.resx">
+      <DependentUpon>Form_DT_Bangoigensolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Banmypham.resx">
+      <DependentUpon>Form_DT_Banmypham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Banthuoctieuhoa.resx">
+      <DependentUpon>Form_DT_Banthuoctieuhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ADMIN_doimatkhau.resx">
+      <DependentUpon>Form_ADMIN_doimatkhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CSKH_Hoatdongbaocaokhoakhambenh.resx">
+      <DependentUpon>Form_CSKH_Hoatdongbaocaokhoakhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_BenhNhanKSKQuayLai.resx">
+      <DependentUpon>Form_DT_BenhNhanKSKQuayLai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Doanhthuksktoandien.resx">
+      <DependentUpon>Form_DT_Doanhthuksktoandien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Doanhthutheochuyenkhoa.resx">
+      <DependentUpon>Form_DT_Doanhthutheochuyenkhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Goikhamconlai.resx">
+      <DependentUpon>Form_DT_Goikhamconlai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Thuoc.resx">
+      <DependentUpon>Form_DT_Thuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_TongHopDichVu.resx">
+      <DependentUpon>Form_DT_TongHopDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_TongHopDichVuChiTiet.resx">
+      <DependentUpon>Form_DT_TongHopDichVuChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_TongHopDichVuChiTietDongTien.resx">
+      <DependentUpon>Form_DT_TongHopDichVuChiTietDongTien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_banthuoctheobacsi.resx">
+      <DependentUpon>Form_Hoatdong68_thuoctheobacsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_chidinhpt.resx">
+      <DependentUpon>Form_Hoatdong68_chidinhpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_KhachKhamhTMH.resx">
+      <DependentUpon>Form_Hoatdong68_KhachKhamhTMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_Soluongkhamvachidinhbstmh.resx">
+      <DependentUpon>Form_Hoatdong68_Soluongkhamvachidinhbstmh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_Tinhhinhkcbtmh.resx">
+      <DependentUpon>Form_Hoatdong68_Tinhhinhkcbtmh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Hoatdong68_Tyledonthuoc.resx">
+      <DependentUpon>Form_Hoatdong68_Tyledonthuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_danhsachbenhnhanxuatvien.resx">
+      <DependentUpon>Form_KHTH_danhsachbenhnhanxuatvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_danhsachbnnn.resx">
+      <DependentUpon>Form_KHTH_danhsachbnnn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_danhsachbnpt.resx">
+      <DependentUpon>Form_KHTH_danhsachbnpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_sokhambenh.resx">
+      <DependentUpon>Form_KHTH_sokhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_sophauthuat.resx">
+      <DependentUpon>Form_KHTH_sophauthuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_soravaochuyenvien.resx">
+      <DependentUpon>Form_KHTH_soravaochuyenvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_thongkebenhtattheobenhnhankhambenh.resx">
+      <DependentUpon>Form_KHTH_thongkebenhtattheobenhnhankhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_thongkesoravaochuyenvien.resx">
+      <DependentUpon>Form_KHTH_thongkesoravaochuyenvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_thongketinhhinhhoatdongkhambenh.resx">
+      <DependentUpon>Form_KHTH_thongketinhhinhhoatdongkhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_thongketinhhinhphauthuat.resx">
+      <DependentUpon>Form_KHTH_thongketinhhinhphauthuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_tinhhinhhoatdongcls.resx">
+      <DependentUpon>Form_KHTH_tinhhinhhoatdongcls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_hoatdongcls.resx">
+      <DependentUpon>Form_KHTH_hoatdongcls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_hoatdongdieutri.resx">
+      <DependentUpon>Form_KHTH_hoatdongdieutri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_hoatdongkham.resx">
+      <DependentUpon>Form_KHTH_hoatdongkham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_hoatdongkhambenh.resx">
+      <DependentUpon>Form_KHTH_hoatdongkhambenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_maubaocaopkdk.resx">
+      <DependentUpon>Form_KHTH_maubaocaopkdk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KHTH_tinhhinhsudungthuoctheobacsi.resx">
+      <DependentUpon>Form_KHTH_tinhhinhsudungthuoctheobacsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_Khachtmh.resx">
+      <DependentUpon>Form_MKT_Khachtmh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_Khamsuckhoecongty.resx">
+      <DependentUpon>Form_MKT_Khamsuckhoecongty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_PhanTich3ChiNhanh.resx">
+      <DependentUpon>Form_MKT_PhanTich3ChiNhanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_Soluotkham.resx">
+      <DependentUpon>Form_MKT_Soluotkham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_Thoigiankhamdautien.resx">
+      <DependentUpon>Form_MKT_Thoigiankhamdautien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MKT_Tongdoanhthumotkhach.resx">
+      <DependentUpon>Form_MKT_Tongdoanhthumotkhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TNIEN_Danhsachkhamrhm.resx">
+      <DependentUpon>Form_TNIEN_Danhsachkhamrhm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitietdongtienbv.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitietdongtienq7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_danhsachbnnn.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_danhsachbnpt.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_sokhambenh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_sophauthuat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_thongketinhhinhhoatdongkhambenh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_thongketinhhinhphauthuat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_tinhhinhsudungthuoctheobacsi - Copy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_thongkebenhtattheobnkb.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_danhsachbenhnhanxuatvien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_tinhhinhhoatdongcls.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_hoatdongdieutri.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_hoatdongcls.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_hoatdongkhambenh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_hoatdongkham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_KHTH_maubaocaopkdk.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Bangoigensolution2cn.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_bangoigensolutionQ7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpBanmypham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpBanthuoctieuhoa3Chinhanh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpBanthuoctieuhoaBv.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpBanthuoctieuhoaQ7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Chiphinhapvpp.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Chiphinhapvpp2cn.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Chiphinhapvpp_bv.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhaphoachat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhaphoachat2cn.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhaphoachatbenhvien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapthuoc.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapthuoc2CN.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapthuocbenhvien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapvatu.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapvatu2cn.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CP_Nhapvatubenhvien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Canhbaotiemchuan.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Danhsachchamsoctieuhoa.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Hinhthucdenkham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Hoatdongbaocaokhambenh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Hoatdonghangngayphongkham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Listbenhnhantheongaysinhnhat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpTongdoanhthumotkhach3Chinhanh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpSoluotkham3Chinhanh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpSoluotkhamBv.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpSoluotkhamQ7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpTongdoanhthumotkhach.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RpBanthuoctieuhoa.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpDoanhThuThamMy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DT_Thammy.resx">
+      <DependentUpon>Form_DT_Thammy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpSoluotkham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpTongdoanhthumotkhachBv.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RpTongdoanhthumotkhachQ7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ADMIN_Phanquyen.resx">
+      <DependentUpon>Form_ADMIN_Phanquyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Bangkethutientheonoidung.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_CSKH_Thongkegoikhamtoandienvachuyenkhoa.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Bandichvuphauthuat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Bangoigensolution.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Doanhthuksktoandien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Goikhamconlai.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Thuoc3CN.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_ThuocBV.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_ThuocQ7.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_Thuoc.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_BenhNhanKSKQuayLaiKham.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_TongHopDichVu.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitietdongtien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitiet_Q7.rdlc" />
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitiet_BV.rdlc" />
+    <EmbeddedResource Include="Rp_DT_tonghopdichvuchitiet.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_TongHopDichVu_915.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_DT_TongHopDichVu_Q7.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_banthuoctheobacsi.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_chidinhphauthuat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_Tylebanthuoc.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_Soluongkhamvachidinhbstmh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_Khachkhamtmh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_Hoatdong68_Tinhhinhkcbtmh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_MKT_Khachtmh.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_MKT_khamsuckhoecongty.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_MKT_Phantich3chinhanh.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_MKT_Thoigiankhamdautien.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_MKT_ThoigiankhamdautienBV.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rp_TNIEN_Danhsachkhamrhm.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="A_Doanhthuchitiet_Pg.xsc">
+      <DependentUpon>A_Doanhthuchitiet_Pg.xsd</DependentUpon>
+    </None>
+    <None Include="A_Doanhthuchitiet_Pg.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>A_Doanhthuchitiet_Pg.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="A_Doanhthuchitiet_Pg.xss">
+      <DependentUpon>A_Doanhthuchitiet_Pg.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet.xss">
+      <DependentUpon>Clinic_PKQ7DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet1.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet1.xss">
+      <DependentUpon>Clinic_PKQ7DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet2.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet2.xss">
+      <DependentUpon>Clinic_PKQ7DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet3.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet3.xss">
+      <DependentUpon>Clinic_PKQ7DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet4.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet4.xss">
+      <DependentUpon>Clinic_PKQ7DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet5.xsc">
+      <DependentUpon>Clinic_PKQ7DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSet5.xss">
+      <DependentUpon>Clinic_PKQ7DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetbangoigensolutionq7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetbangoigensolutionq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetbangoigensolutionq7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetbangoigensolutionq7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetbangoigensolutionq7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetbangoigensolutionq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetBanthuoctieuhoaQ7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetBanthuoctieuhoaQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDanhsachkhamrhm.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetDanhsachkhamrhm.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDanhsachkhamrhm.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetDanhsachkhamrhm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDanhsachkhamrhm.xss">
+      <DependentUpon>Clinic_PKQ7DataSetDanhsachkhamrhm.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthubanthuocQ7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthubanthuocQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthubanthuocQ7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetDoanhthubanthuocQ7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthubanthuocQ7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthubanthuocQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetDoanhthumotkhachhangQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamBv.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamBv.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamBv.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetSoluotkhamBv.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamBv.xss">
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamBv.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamQ7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamQ7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetSoluotkhamQ7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetSoluotkhamQ7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetSoluotkhamQ7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSettonghopdichvuchitietq7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSettonghopdichvuchitietq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSettonghopdichvuchitietq7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSettonghopdichvuchitietq7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSettonghopdichvuchitietq7.xss">
+      <DependentUpon>Clinic_PKQ7DataSettonghopdichvuchitietq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq7.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetTonghopdvq7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq7.xss">
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq72.xsc">
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq72.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq72.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7DataSetTonghopdvq72.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7DataSetTonghopdvq72.xss">
+      <DependentUpon>Clinic_PKQ7DataSetTonghopdvq72.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7soluotkhamq72.xsc">
+      <DependentUpon>Clinic_PKQ7soluotkhamq72.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_PKQ7soluotkhamq72.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_PKQ7soluotkhamq72.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_PKQ7soluotkhamq72.xss">
+      <DependentUpon>Clinic_PKQ7soluotkhamq72.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet1.xsc">
+      <DependentUpon>Clinic_TMHDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet1.xss">
+      <DependentUpon>Clinic_TMHDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet10.xsc">
+      <DependentUpon>Clinic_TMHDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet10.xss">
+      <DependentUpon>Clinic_TMHDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet11.xsc">
+      <DependentUpon>Clinic_TMHDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet11.xss">
+      <DependentUpon>Clinic_TMHDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet12.xsc">
+      <DependentUpon>Clinic_TMHDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet12.xss">
+      <DependentUpon>Clinic_TMHDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet13.xsc">
+      <DependentUpon>Clinic_TMHDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet13.xss">
+      <DependentUpon>Clinic_TMHDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet14.xsc">
+      <DependentUpon>Clinic_TMHDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet14.xss">
+      <DependentUpon>Clinic_TMHDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet15.xsc">
+      <DependentUpon>Clinic_TMHDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet15.xss">
+      <DependentUpon>Clinic_TMHDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet16.xsc">
+      <DependentUpon>Clinic_TMHDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet16.xss">
+      <DependentUpon>Clinic_TMHDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet17.xsc">
+      <DependentUpon>Clinic_TMHDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet17.xss">
+      <DependentUpon>Clinic_TMHDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet18.xsc">
+      <DependentUpon>Clinic_TMHDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet18.xss">
+      <DependentUpon>Clinic_TMHDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet19.xsc">
+      <DependentUpon>Clinic_TMHDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet19.xss">
+      <DependentUpon>Clinic_TMHDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet1phantich3chinhanh.xsc">
+      <DependentUpon>Clinic_TMHDataSet1phantich3chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet1phantich3chinhanh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet1phantich3chinhanh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet1phantich3chinhanh.xss">
+      <DependentUpon>Clinic_TMHDataSet1phantich3chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet2.xsc">
+      <DependentUpon>Clinic_TMHDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet2.xss">
+      <DependentUpon>Clinic_TMHDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet20.xsc">
+      <DependentUpon>Clinic_TMHDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet20.xss">
+      <DependentUpon>Clinic_TMHDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet21.xsc">
+      <DependentUpon>Clinic_TMHDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet21.xss">
+      <DependentUpon>Clinic_TMHDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet22.xsc">
+      <DependentUpon>Clinic_TMHDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet22.xss">
+      <DependentUpon>Clinic_TMHDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet23.xsc">
+      <DependentUpon>Clinic_TMHDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet23.xss">
+      <DependentUpon>Clinic_TMHDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet24.xsc">
+      <DependentUpon>Clinic_TMHDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet24.xss">
+      <DependentUpon>Clinic_TMHDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet25.xsc">
+      <DependentUpon>Clinic_TMHDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet25.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet25.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet25.xss">
+      <DependentUpon>Clinic_TMHDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet26.xsc">
+      <DependentUpon>Clinic_TMHDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet26.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet26.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet26.xss">
+      <DependentUpon>Clinic_TMHDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet27.xsc">
+      <DependentUpon>Clinic_TMHDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet27.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet27.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet27.xss">
+      <DependentUpon>Clinic_TMHDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet28.xsc">
+      <DependentUpon>Clinic_TMHDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet28.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet28.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet28.xss">
+      <DependentUpon>Clinic_TMHDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet29.xsc">
+      <DependentUpon>Clinic_TMHDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet29.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet29.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet29.xss">
+      <DependentUpon>Clinic_TMHDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet3.xsc">
+      <DependentUpon>Clinic_TMHDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet3.xss">
+      <DependentUpon>Clinic_TMHDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet30.xsc">
+      <DependentUpon>Clinic_TMHDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet30.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet30.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet30.xss">
+      <DependentUpon>Clinic_TMHDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet31.xsc">
+      <DependentUpon>Clinic_TMHDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet31.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet31.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet31.xss">
+      <DependentUpon>Clinic_TMHDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet32.xsc">
+      <DependentUpon>Clinic_TMHDataSet32.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet32.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet32.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet32.xss">
+      <DependentUpon>Clinic_TMHDataSet32.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet4.xsc">
+      <DependentUpon>Clinic_TMHDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet4.xss">
+      <DependentUpon>Clinic_TMHDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet5.xsc">
+      <DependentUpon>Clinic_TMHDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet5.xss">
+      <DependentUpon>Clinic_TMHDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet6.xsc">
+      <DependentUpon>Clinic_TMHDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet6.xss">
+      <DependentUpon>Clinic_TMHDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet7.xsc">
+      <DependentUpon>Clinic_TMHDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet7.xss">
+      <DependentUpon>Clinic_TMHDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet8.xsc">
+      <DependentUpon>Clinic_TMHDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet8.xss">
+      <DependentUpon>Clinic_TMHDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet9.xsc">
+      <DependentUpon>Clinic_TMHDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSet9.xss">
+      <DependentUpon>Clinic_TMHDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBangkethutientheonoidung.xsc">
+      <DependentUpon>Clinic_TMHDataSetBangkethutientheonoidung.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBangkethutientheonoidung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetBangkethutientheonoidung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetBangkethutientheonoidung.xss">
+      <DependentUpon>Clinic_TMHDataSetBangkethutientheonoidung.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigen2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetbangoigen2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigen2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetbangoigen2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigen2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetbangoigen2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution.xsc">
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetbangoigensolution.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution.xss">
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution2cn1.xsc">
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution2cn1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution2cn1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetbangoigensolution2cn1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetbangoigensolution2cn1.xss">
+      <DependentUpon>Clinic_TMHDataSetbangoigensolution2cn1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa.xsc">
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetBanthuoctieuhoa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa.xss">
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xsc">
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xss">
+      <DependentUpon>Clinic_TMHDataSetBanthuoctieuhoa3Chinhanh1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbenhnhankskquaylaikham.xsc">
+      <DependentUpon>Clinic_TMHDataSetbenhnhankskquaylaikham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetbenhnhankskquaylaikham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetbenhnhankskquaylaikham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetbenhnhankskquaylaikham.xss">
+      <DependentUpon>Clinic_TMHDataSetbenhnhankskquaylaikham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetCanhbaotiemchuan.xsc">
+      <DependentUpon>Clinic_TMHDataSetCanhbaotiemchuan.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetCanhbaotiemchuan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetCanhbaotiemchuan.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetCanhbaotiemchuan.xss">
+      <DependentUpon>Clinic_TMHDataSetCanhbaotiemchuan.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhanvpp.xsc">
+      <DependentUpon>Clinic_TMHDataSetChiphinhanvpp.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhanvpp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetChiphinhanvpp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhanvpp.xss">
+      <DependentUpon>Clinic_TMHDataSetChiphinhanvpp.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc.xsc">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetChiphinhapthuoc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc.xss">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc1.xsc">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetChiphinhapthuoc1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuoc1.xss">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuoc1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuocbv.xsc">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuocbv.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuocbv.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetChiphinhapthuocbv.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapthuocbv.xss">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapthuocbv.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapvpp2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapvpp2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapvpp2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetChiphinhapvpp2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetChiphinhapvpp2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetChiphinhapvpp2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDanhsachchamsoctieuhoa.xsc">
+      <DependentUpon>Clinic_TMHDataSetDanhsachchamsoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDanhsachchamsoctieuhoa.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDanhsachchamsoctieuhoa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDanhsachchamsoctieuhoa.xss">
+      <DependentUpon>Clinic_TMHDataSetDanhsachchamsoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoc.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoc.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthubanthuoc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoc.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoc.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthubanthuoctieuhoa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthubanthuoctieuhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthugoikhamconlai.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthugoikhamconlai.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthugoikhamconlai.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthugoikhamconlai.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthugoikhamconlai.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthugoikhamconlai.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthugoikhamconlai1.xsc">
+      <DependentUpon>Clinic_TMHDataSetdoanhthugoikhamconlai1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthugoikhamconlai1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetdoanhthugoikhamconlai1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthugoikhamconlai1.xss">
+      <DependentUpon>Clinic_TMHDataSetdoanhthugoikhamconlai1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthuksktoandien.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthuksktoandien.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthuksktoandien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthuksktoandien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthuksktoandien.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthuksktoandien.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthuksktoandien1.xsc">
+      <DependentUpon>Clinic_TMHDataSetdoanhthuksktoandien1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthuksktoandien1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetdoanhthuksktoandien1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthuksktoandien1.xss">
+      <DependentUpon>Clinic_TMHDataSetdoanhthuksktoandien1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhach3Chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhachhang.xsc">
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhachhang.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhachhang.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetDoanhthumotkhachhang.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetDoanhthumotkhachhang.xss">
+      <DependentUpon>Clinic_TMHDataSetDoanhthumotkhachhang.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop915.xsc">
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop915.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop915.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetdoanhthutonghop915.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop915.xss">
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop915.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop9152.xsc">
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop9152.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop9152.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetdoanhthutonghop9152.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetdoanhthutonghop9152.xss">
+      <DependentUpon>Clinic_TMHDataSetdoanhthutonghop9152.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetgensolution2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetgensolution2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetgensolution2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetgensolution2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetgensolution2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetgensolution2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHinhthucdenkham.xsc">
+      <DependentUpon>Clinic_TMHDataSetHinhthucdenkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHinhthucdenkham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetHinhthucdenkham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetHinhthucdenkham.xss">
+      <DependentUpon>Clinic_TMHDataSetHinhthucdenkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdongbaocaokhambenh.xsc">
+      <DependentUpon>Clinic_TMHDataSetHoatdongbaocaokhambenh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdongbaocaokhambenh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetHoatdongbaocaokhambenh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdongbaocaokhambenh.xss">
+      <DependentUpon>Clinic_TMHDataSetHoatdongbaocaokhambenh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdonghangngayphongkham.xsc">
+      <DependentUpon>Clinic_TMHDataSetHoatdonghangngayphongkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdonghangngayphongkham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetHoatdonghangngayphongkham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetHoatdonghangngayphongkham.xss">
+      <DependentUpon>Clinic_TMHDataSetHoatdonghangngayphongkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetKhamsuckhoecongty.xsc">
+      <DependentUpon>Clinic_TMHDataSetKhamsuckhoecongty.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetKhamsuckhoecongty.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetKhamsuckhoecongty.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetKhamsuckhoecongty.xss">
+      <DependentUpon>Clinic_TMHDataSetKhamsuckhoecongty.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetListbenhnhanhtheongaysinh.xsc">
+      <DependentUpon>Clinic_TMHDataSetListbenhnhanhtheongaysinh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetListbenhnhanhtheongaysinh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetListbenhnhanhtheongaysinh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetListbenhnhanhtheongaysinh.xss">
+      <DependentUpon>Clinic_TMHDataSetListbenhnhanhtheongaysinh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat.xsc">
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetNhaphoachat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat.xss">
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetNhaphoachat2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetNhaphoachat2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetNhaphoachat2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapthuoc2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetNhapthuoc2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapthuoc2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetNhapthuoc2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapthuoc2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetNhapthuoc2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu.xsc">
+      <DependentUpon>Clinic_TMHDataSetNhapvattu.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetNhapvattu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu.xss">
+      <DependentUpon>Clinic_TMHDataSetNhapvattu.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu2cn.xsc">
+      <DependentUpon>Clinic_TMHDataSetNhapvattu2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu2cn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetNhapvattu2cn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetNhapvattu2cn.xss">
+      <DependentUpon>Clinic_TMHDataSetNhapvattu2cn.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetPhantich3chinhanh.xsc">
+      <DependentUpon>Clinic_TMHDataSetPhantich3chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetPhantich3chinhanh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetPhantich3chinhanh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetPhantich3chinhanh.xss">
+      <DependentUpon>Clinic_TMHDataSetPhantich3chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham.xsc">
+      <DependentUpon>Clinic_TMHDataSetSoluotkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetSoluotkham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham.xss">
+      <DependentUpon>Clinic_TMHDataSetSoluotkham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetsoluotkham2.xsc">
+      <DependentUpon>Clinic_TMHDataSetsoluotkham2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetsoluotkham2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetsoluotkham2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetsoluotkham2.xss">
+      <DependentUpon>Clinic_TMHDataSetsoluotkham2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham3Chinhanh.xsc">
+      <DependentUpon>Clinic_TMHDataSetSoluotkham3Chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham3Chinhanh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetSoluotkham3Chinhanh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetSoluotkham3Chinhanh.xss">
+      <DependentUpon>Clinic_TMHDataSetSoluotkham3Chinhanh.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThammy.xsc">
+      <DependentUpon>Clinic_TMHDataSetThammy.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThammy.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetThammy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetThammy.xss">
+      <DependentUpon>Clinic_TMHDataSetThammy.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThoigiankhamdautien.xsc">
+      <DependentUpon>Clinic_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThoigiankhamdautien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetThoigiankhamdautien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetThoigiankhamdautien.xss">
+      <DependentUpon>Clinic_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xsc">
+      <DependentUpon>Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xss">
+      <DependentUpon>Clinic_TMHDataSetThongkegoikhamtoandienvachuyenkhoa.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet.xsc">
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSettonghopdichvuchitiet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet.xss">
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet1.xsc">
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHDataSettonghopdichvuchitiet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHDataSettonghopdichvuchitiet1.xss">
+      <DependentUpon>Clinic_TMHDataSettonghopdichvuchitiet1.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHdoanhthuksktoandien2.xsc">
+      <DependentUpon>Clinic_TMHdoanhthuksktoandien2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHdoanhthuksktoandien2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHdoanhthuksktoandien2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHdoanhthuksktoandien2.xss">
+      <DependentUpon>Clinic_TMHdoanhthuksktoandien2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHgoikhamconlai.xsc">
+      <DependentUpon>Clinic_TMHgoikhamconlai.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHgoikhamconlai.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHgoikhamconlai.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHgoikhamconlai.xss">
+      <DependentUpon>Clinic_TMHgoikhamconlai.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHKhamsuckhoecongty2.xsc">
+      <DependentUpon>Clinic_TMHKhamsuckhoecongty2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHKhamsuckhoecongty2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHKhamsuckhoecongty2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHKhamsuckhoecongty2.xss">
+      <DependentUpon>Clinic_TMHKhamsuckhoecongty2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHphantich3chinhanh2.xsc">
+      <DependentUpon>Clinic_TMHphantich3chinhanh2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHphantich3chinhanh2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHphantich3chinhanh2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHphantich3chinhanh2.xss">
+      <DependentUpon>Clinic_TMHphantich3chinhanh2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHquaylaikham.xsc">
+      <DependentUpon>Clinic_TMHquaylaikham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHquaylaikham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHquaylaikham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHquaylaikham.xss">
+      <DependentUpon>Clinic_TMHquaylaikham.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHsoluotkham3cn2.xsc">
+      <DependentUpon>Clinic_TMHsoluotkham3cn2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHsoluotkham3cn2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHsoluotkham3cn2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHsoluotkham3cn2.xss">
+      <DependentUpon>Clinic_TMHsoluotkham3cn2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHThoigiamkhamdautien2.xsc">
+      <DependentUpon>Clinic_TMHThoigiamkhamdautien2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHThoigiamkhamdautien2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHThoigiamkhamdautien2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHThoigiamkhamdautien2.xss">
+      <DependentUpon>Clinic_TMHThoigiamkhamdautien2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHthoigiankhamdautien2.xsc">
+      <DependentUpon>Clinic_TMHthoigiankhamdautien2.xsd</DependentUpon>
+    </None>
+    <None Include="Clinic_TMHthoigiankhamdautien2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Clinic_TMHthoigiankhamdautien2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clinic_TMHthoigiankhamdautien2.xss">
+      <DependentUpon>Clinic_TMHthoigiankhamdautien2.xsd</DependentUpon>
+    </None>
+    <None Include="Data_SystemDataSetBanmypham.xsc">
+      <DependentUpon>Data_SystemDataSetBanmypham.xsd</DependentUpon>
+    </None>
+    <None Include="Data_SystemDataSetBanmypham.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Data_SystemDataSetBanmypham.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data_SystemDataSetBanmypham.xss">
+      <DependentUpon>Data_SystemDataSetBanmypham.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet.xsc">
+      <DependentUpon>eHospital_TMHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet.xss">
+      <DependentUpon>eHospital_TMHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet1.xsc">
+      <DependentUpon>eHospital_TMHDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet1.xss">
+      <DependentUpon>eHospital_TMHDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet10.xsc">
+      <DependentUpon>eHospital_TMHDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet10.xss">
+      <DependentUpon>eHospital_TMHDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet11.xsc">
+      <DependentUpon>eHospital_TMHDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet11.xss">
+      <DependentUpon>eHospital_TMHDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet12.xsc">
+      <DependentUpon>eHospital_TMHDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet12.xss">
+      <DependentUpon>eHospital_TMHDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet13.xsc">
+      <DependentUpon>eHospital_TMHDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet13.xss">
+      <DependentUpon>eHospital_TMHDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet2.xsc">
+      <DependentUpon>eHospital_TMHDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet2.xss">
+      <DependentUpon>eHospital_TMHDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet3.xsc">
+      <DependentUpon>eHospital_TMHDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet3.xss">
+      <DependentUpon>eHospital_TMHDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet4.xsc">
+      <DependentUpon>eHospital_TMHDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet4.xss">
+      <DependentUpon>eHospital_TMHDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet5.xsc">
+      <DependentUpon>eHospital_TMHDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet5.xss">
+      <DependentUpon>eHospital_TMHDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet6.xsc">
+      <DependentUpon>eHospital_TMHDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet6.xss">
+      <DependentUpon>eHospital_TMHDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet7.xsc">
+      <DependentUpon>eHospital_TMHDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet7.xss">
+      <DependentUpon>eHospital_TMHDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet8.xsc">
+      <DependentUpon>eHospital_TMHDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet8.xss">
+      <DependentUpon>eHospital_TMHDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet9.xsc">
+      <DependentUpon>eHospital_TMHDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSet9.xss">
+      <DependentUpon>eHospital_TMHDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetBandichvuphauthuat.xsc">
+      <DependentUpon>eHospital_TMHDataSetBandichvuphauthuat.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetBandichvuphauthuat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetBandichvuphauthuat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetBandichvuphauthuat.xss">
+      <DependentUpon>eHospital_TMHDataSetBandichvuphauthuat.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetBanthuoctieuhoaBv1.xsc">
+      <DependentUpon>eHospital_TMHDataSetBanthuoctieuhoaBv1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetBanthuoctieuhoaBv1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetBanthuoctieuhoaBv1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetBanthuoctieuhoaBv1.xss">
+      <DependentUpon>eHospital_TMHDataSetBanthuoctieuhoaBv1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetChiphinhapvpp.xsc">
+      <DependentUpon>eHospital_TMHDataSetChiphinhapvpp.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetChiphinhapvpp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetChiphinhapvpp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetChiphinhapvpp.xss">
+      <DependentUpon>eHospital_TMHDataSetChiphinhapvpp.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuoc3CN.xsc">
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuoc3CN.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuoc3CN.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetDoanhthubanthuoc3CN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuoc3CN.xss">
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuoc3CN.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuocBV.xsc">
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuocBV.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuocBV.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetDoanhthubanthuocBV.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthubanthuocBV.xss">
+      <DependentUpon>eHospital_TMHDataSetDoanhthubanthuocBV.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthumotkhachhangBv.xsc">
+      <DependentUpon>eHospital_TMHDataSetDoanhthumotkhachhangBv.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthumotkhachhangBv.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetDoanhthumotkhachhangBv.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetDoanhthumotkhachhangBv.xss">
+      <DependentUpon>eHospital_TMHDataSetDoanhthumotkhachhangBv.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetKhachkhamtmh.xsc">
+      <DependentUpon>eHospital_TMHDataSetKhachkhamtmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetKhachkhamtmh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetKhachkhamtmh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetKhachkhamtmh.xss">
+      <DependentUpon>eHospital_TMHDataSetKhachkhamtmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhaphoachatbenhvien.xsc">
+      <DependentUpon>eHospital_TMHDataSetNhaphoachatbenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhaphoachatbenhvien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetNhaphoachatbenhvien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetNhaphoachatbenhvien.xss">
+      <DependentUpon>eHospital_TMHDataSetNhaphoachatbenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapthuocbenhvien.xsc">
+      <DependentUpon>eHospital_TMHDataSetNhapthuocbenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapthuocbenhvien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetNhapthuocbenhvien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapthuocbenhvien.xss">
+      <DependentUpon>eHospital_TMHDataSetNhapthuocbenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapvattubenhvien.xsc">
+      <DependentUpon>eHospital_TMHDataSetNhapvattubenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapvattubenhvien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetNhapvattubenhvien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetNhapvattubenhvien.xss">
+      <DependentUpon>eHospital_TMHDataSetNhapvattubenhvien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xsc">
+      <DependentUpon>eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetSoluongkhamvachidinhbstmh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xss">
+      <DependentUpon>eHospital_TMHDataSetSoluongkhamvachidinhbstmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetThoigiankhamdautien.xsc">
+      <DependentUpon>eHospital_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetThoigiankhamdautien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetThoigiankhamdautien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetThoigiankhamdautien.xss">
+      <DependentUpon>eHospital_TMHDataSetThoigiankhamdautien.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetTinhhinhkcbtmh.xsc">
+      <DependentUpon>eHospital_TMHDataSetTinhhinhkcbtmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSetTinhhinhkcbtmh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSetTinhhinhkcbtmh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSetTinhhinhkcbtmh.xss">
+      <DependentUpon>eHospital_TMHDataSetTinhhinhkcbtmh.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdichvuchitietbv1.xsc">
+      <DependentUpon>eHospital_TMHDataSettonghopdichvuchitietbv1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdichvuchitietbv1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSettonghopdichvuchitietbv1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdichvuchitietbv1.xss">
+      <DependentUpon>eHospital_TMHDataSettonghopdichvuchitietbv1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdv4.xsc">
+      <DependentUpon>eHospital_TMHDataSettonghopdv4.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdv4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHDataSettonghopdv4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHDataSettonghopdv4.xss">
+      <DependentUpon>eHospital_TMHDataSettonghopdv4.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHdttonghopdichvu1.xsc">
+      <DependentUpon>eHospital_TMHdttonghopdichvu1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHdttonghopdichvu1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHdttonghopdichvu1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHdttonghopdichvu1.xss">
+      <DependentUpon>eHospital_TMHdttonghopdichvu1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHKhachkhamtmh2.xsc">
+      <DependentUpon>eHospital_TMHKhachkhamtmh2.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHKhachkhamtmh2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHKhachkhamtmh2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHKhachkhamtmh2.xss">
+      <DependentUpon>eHospital_TMHKhachkhamtmh2.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHKhachtmh1.xsc">
+      <DependentUpon>eHospital_TMHKhachtmh1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHKhachtmh1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHKhachtmh1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHKhachtmh1.xss">
+      <DependentUpon>eHospital_TMHKhachtmh1.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHsoluotkhambv2.xsc">
+      <DependentUpon>eHospital_TMHsoluotkhambv2.xsd</DependentUpon>
+    </None>
+    <None Include="eHospital_TMHsoluotkhambv2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>eHospital_TMHsoluotkhambv2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="eHospital_TMHsoluotkhambv2.xss">
+      <DependentUpon>eHospital_TMHsoluotkhambv2.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo-taimuihongsg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+  </Target>
+</Project>
